@@ -10,6 +10,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import axios from "axios";
 import { API_URL } from "./config";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
@@ -106,7 +107,7 @@ export default function Form() {
             type="url"
             inputRef={textInputRef}
           />
-          <Button color="primary" type="submit">
+          <Button color="secondary" type="submit">
             Generate
           </Button>
         </Paper>
@@ -127,6 +128,7 @@ export default function Form() {
           </CopyToClipboard>
         ) : null}
       </Container>
+      <Footer />
     </div>
   );
 }
