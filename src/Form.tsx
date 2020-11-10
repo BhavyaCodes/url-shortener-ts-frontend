@@ -8,6 +8,9 @@ import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Snackbar from "@material-ui/core/Snackbar";
+import CloseIcon from "@material-ui/icons/Close";
+import IconButton from "@material-ui/core/IconButton";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -83,8 +86,47 @@ export default function Form() {
     setShortUrl(`${baseUrl}/${response.data.url.short}`);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | React.MouseEvent,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Copied to clipboard"
+        action={
+          <React.Fragment>
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       <Navbar />
       <Container className={classes.root}>
         <Typography
@@ -112,7 +154,7 @@ export default function Form() {
           </Button>
         </Paper>
         {shortUrl ? (
-          <CopyToClipboard text={shortUrl}>
+          <CopyToClipboard text={shortUrl} onCopy={handleClick}>
             <Tooltip title="Click to copy">
               <Paper
                 component="div"

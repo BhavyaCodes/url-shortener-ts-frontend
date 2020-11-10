@@ -47,7 +47,7 @@ function Footer() {
     <AppBar position="absolute" color="primary" className={classes.footer}>
       <Toolbar className={classes.footerIcons}>
         <div>
-          <Typography
+          {/* <Typography
             variant="subtitle1"
             gutterBottom
             className={classes.footerText}
@@ -55,7 +55,7 @@ function Footer() {
             <span>Made with </span>
             <FavoriteIcon className={classes.heartIcon} />
             <span> by Bhavya Tomar</span>
-          </Typography>
+          </Typography> */}
         </div>
         <div>
           <Link
