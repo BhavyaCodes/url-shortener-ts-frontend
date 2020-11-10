@@ -52,6 +52,7 @@ export default function Form() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const textInput = textInputRef.current?.value;
+    console.log(textInput);
     const response = await axios.post(`${API_URL}`, { url: textInput });
     setShortUrl(`${baseUrl}/${response.data.url.short}`);
   };
@@ -63,19 +64,24 @@ export default function Form() {
         <Typography variant="h3" gutterBottom align="center">
           Shorts - URL Shortening Service
         </Typography>
-        <Paper component="form" className={classes.inputContainer}>
+
+        <Paper
+          component="form"
+          onSubmit={handleSubmit}
+          className={classes.inputContainer}
+        >
           <InputBase
             className={classes.input}
             placeholder="Enter Long URL"
-            inputProps={{ "aria-label": "search google maps" }}
+            inputProps={{ "aria-label": "Enter Long URL" }}
+            type="url"
+            inputRef={textInputRef}
           />
-          <Button color="primary">Generate</Button>
+          <Button color="primary" type="submit">
+            Generate
+          </Button>
         </Paper>
-        <form onSubmit={handleSubmit}>
-          <input type="url" ref={textInputRef} />
-          <button type="submit">Get Short url</button>
-          {shortUrl}
-        </form>
+        {shortUrl}
       </Container>
     </div>
   );
