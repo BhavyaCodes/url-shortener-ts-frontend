@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 import Navbar from "./Navbar";
 import axios from "axios";
@@ -95,18 +96,20 @@ export default function Form() {
           </Button>
         </Paper>
         {shortUrl ? (
-          <Tooltip title="Click to copy">
-            <Paper
-              component="div"
-              elevation={1}
-              className={classes.shortUrlContainer}
-            >
-              <div className={classes.shortUrlDiv}>
-                <Typography>{shortUrl}</Typography>
-                <FileCopyIcon className={classes.copyIcon} />
-              </div>
-            </Paper>
-          </Tooltip>
+          <CopyToClipboard text="ok">
+            <Tooltip title="Click to copy">
+              <Paper
+                component="div"
+                elevation={1}
+                className={classes.shortUrlContainer}
+              >
+                <div className={classes.shortUrlDiv}>
+                  <Typography>{shortUrl}</Typography>
+                  <FileCopyIcon className={classes.copyIcon} />
+                </div>
+              </Paper>
+            </Tooltip>
+          </CopyToClipboard>
         ) : null}
       </Container>
     </div>
