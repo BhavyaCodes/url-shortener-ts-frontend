@@ -111,7 +111,7 @@ export default function Form() {
           </Button>
         </Paper>
         {shortUrl ? (
-          <CopyToClipboard text="ok">
+          <CopyToClipboard text={shortUrl}>
             <Tooltip title="Click to copy">
               <Paper
                 component="div"
