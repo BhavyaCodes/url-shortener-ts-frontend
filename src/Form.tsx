@@ -6,18 +6,17 @@ import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import Navbar from "./Navbar";
 import axios from "axios";
 import { API_URL } from "./config";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      padding: "2px 4px",
-      display: "flex",
-      alignItems: "center",
-      width: 400,
+      textAlign: "center",
     },
     inputContainer: {
       alignItems: "center",
@@ -40,6 +39,21 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 28,
       margin: 4,
     },
+    shortUrlContainer: {
+      cursor: "pointer",
+      display: "inline-block",
+      "&:hover": {
+        "& svg": {
+          color: theme.palette.secondary["main"],
+        },
+      },
+    },
+    shortUrlDiv: {
+      display: "flex",
+    },
+    copyIcon: {
+      color: theme.palette.grey[500],
+    },
   })
 );
 
@@ -60,11 +74,10 @@ export default function Form() {
   return (
     <div>
       <Navbar />
-      <Container>
+      <Container className={classes.root}>
         <Typography variant="h3" gutterBottom align="center">
           Shorts - URL Shortening Service
         </Typography>
-
         <Paper
           component="form"
           onSubmit={handleSubmit}
@@ -81,7 +94,20 @@ export default function Form() {
             Generate
           </Button>
         </Paper>
-        {shortUrl}
+        {shortUrl ? (
+          <Tooltip title="Click to copy">
+            <Paper
+              component="div"
+              elevation={1}
+              className={classes.shortUrlContainer}
+            >
+              <div className={classes.shortUrlDiv}>
+                <Typography>{shortUrl}</Typography>
+                <FileCopyIcon className={classes.copyIcon} />
+              </div>
+            </Paper>
+          </Tooltip>
+        ) : null}
       </Container>
     </div>
   );
