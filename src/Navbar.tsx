@@ -45,7 +45,7 @@ export default function ButtonAppBar() {
             onClick={handleThemeChangeMenu}
             color="inherit"
           >
-            <Brightness4Icon />
+            {darkMode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
         </Toolbar>
       </AppBar>

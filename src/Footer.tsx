@@ -6,8 +6,6 @@ import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
 import TwitterIcon from "@material-ui/icons/Twitter";
 import EmailIcon from "@material-ui/icons/Email";
-import Button from "@material-ui/core/Button";
-import OpenInNewIcon from "@material-ui/icons/OpenInNew";
 import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Link from "@material-ui/core/Link";
