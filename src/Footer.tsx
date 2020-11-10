@@ -1,6 +1,6 @@
 import React from "react";
 
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 
@@ -11,7 +11,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import Link from "@material-ui/core/Link";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

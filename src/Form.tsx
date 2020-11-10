@@ -11,6 +11,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -77,15 +78,22 @@ export default function Form() {
   const [shortUrl, setShortUrl] = useState<string>("");
   const baseUrl = window.location.origin;
   const textInputRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const textInput = textInputRef.current?.value;
     console.log(textInput);
+    const timer = setTimeout(() => {
+      setLoading(true);
+    }, 1000);
     const response = await axios.post(`${API_URL}`, { url: textInput });
+    clearTimeout(timer);
+    setLoading(false);
     setShortUrl(`${baseUrl}/${response.data.url.short}`);
   };
 
+  // snackbar
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -102,6 +110,14 @@ export default function Form() {
 
     setOpen(false);
   };
+
+  // progress
+
+  // const displayProgress = () => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(true)
+  //   }, 1000);
+  // };
 
   return (
     <div>
@@ -153,6 +169,7 @@ export default function Form() {
             Generate
           </Button>
         </Paper>
+        {loading ? <CircularProgress color="secondary" /> : null}
         {shortUrl ? (
           <CopyToClipboard text={shortUrl} onCopy={handleClick}>
             <Tooltip title="Click to copy">
