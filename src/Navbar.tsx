@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
+import { ThemeContext, DispatchThemeContext } from "./ThemeContext";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,6 +24,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const darkMode = useContext(ThemeContext);
+  const dispatchTheme = useContext(DispatchThemeContext);
+
+  const handleThemeChangeMenu = () => {
+    dispatchTheme({ type: darkMode === "dark" ? "light" : "dark" });
+  };
 
   return (
     <div className={classes.root}>
@@ -37,7 +42,7 @@ export default function ButtonAppBar() {
             aria-label="toggle dark mode"
             aria-controls="toggle dark mode"
             aria-haspopup="false"
-            // onClick={handleMenu}
+            onClick={handleThemeChangeMenu}
             color="inherit"
           >
             <Brightness4Icon />
