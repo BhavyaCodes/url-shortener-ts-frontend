@@ -186,6 +186,7 @@ export default function Form() {
             placeholder="Enter Long URL"
             inputProps={{ "aria-label": "Enter Long URL" }}
             type="url"
+            required
             inputRef={textInputRef}
           />
           <Button color="secondary" type="submit">

@@ -6,7 +6,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import { ThemeContext, DispatchThemeContext } from "./ThemeContext";
-import textLogoWhite from "./images/isolated-monochrome-white.svg";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
