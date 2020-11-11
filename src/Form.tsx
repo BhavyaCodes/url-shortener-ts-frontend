@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
           color: theme.palette.secondary["main"],
         },
       },
+      maxWidth: "100%",
       padding: theme.spacing(2),
       marginTop: theme.spacing(5),
     },
@@ -73,6 +74,9 @@ const useStyles = makeStyles((theme: Theme) =>
     copyIcon: {
       color: theme.palette.grey[500],
       marginLeft: theme.spacing(4),
+      [theme.breakpoints.down("xs")]: {
+        marginLeft: theme.spacing(0),
+      },
     },
   })
 );
