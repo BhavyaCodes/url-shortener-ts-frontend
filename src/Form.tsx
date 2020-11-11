@@ -32,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       marginTop: theme.spacing(5),
       marginBottom: theme.spacing(5),
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: 400,
     },
     inputContainer: {
       alignItems: "center",

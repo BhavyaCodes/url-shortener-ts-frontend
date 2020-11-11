@@ -7,6 +7,7 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import { ThemeContext, DispatchThemeContext } from "./ThemeContext";
 import textLogoWhite from "./images/isolated-monochrome-white.svg";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +20,8 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
       display: "flex",
+      fontFamily: "'Montserrat', sans-serif",
+      fontWeight: 500,
     },
     logoImage: {
       height: "32px",
@@ -39,12 +42,9 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          {/* <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title}>
             Shorts
-          </Typography> */}
-          <div className={classes.title}>
-            <img className={classes.logoImage} src={textLogoWhite} alt="logo" />
-          </div>
+          </Typography>
           <IconButton
             aria-label="toggle dark mode"
             aria-controls="toggle dark mode"
