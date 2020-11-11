@@ -12,6 +12,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import QRCode from "qrcode.react";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       maxWidth: "100%",
       padding: theme.spacing(2),
-      marginTop: theme.spacing(5),
+      marginTop: theme.spacing(2),
     },
     shortUrlDiv: {
       display: "flex",
@@ -78,6 +79,18 @@ const useStyles = makeStyles((theme: Theme) =>
         marginLeft: theme.spacing(0),
       },
     },
+    qrcode: {
+      width: "100%",
+      marginBottom: theme.spacing(2),
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+      marginTop: theme.spacing(3),
+    },
+    // displayResultRoot: {
+    //   display: "flex",
+    //   flexDirection: "column",
+    // },
   })
 );
 
@@ -179,20 +192,23 @@ export default function Form() {
         </Paper>
         {loading ? <CircularProgress color="secondary" /> : null}
         {shortUrl ? (
-          <CopyToClipboard text={shortUrl} onCopy={handleClick}>
-            <Tooltip title="Click to copy">
-              <Paper
-                component="div"
-                elevation={1}
-                className={classes.shortUrlContainer}
-              >
-                <div className={classes.shortUrlDiv}>
-                  <Typography>{shortUrl}</Typography>
-                  <FileCopyIcon className={classes.copyIcon} />
-                </div>
-              </Paper>
-            </Tooltip>
-          </CopyToClipboard>
+          <div>
+            <QRCode value={shortUrl} className={classes.qrcode} />
+            <CopyToClipboard text={shortUrl} onCopy={handleClick}>
+              <Tooltip title="Click to copy">
+                <Paper
+                  component="div"
+                  elevation={1}
+                  className={classes.shortUrlContainer}
+                >
+                  <div className={classes.shortUrlDiv}>
+                    <Typography>{shortUrl}</Typography>
+                    <FileCopyIcon className={classes.copyIcon} />
+                  </div>
+                </Paper>
+              </Tooltip>
+            </CopyToClipboard>
+          </div>
         ) : null}
       </Container>
       <Footer />
