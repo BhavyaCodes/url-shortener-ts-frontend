@@ -10,11 +10,18 @@ import Typography from "@material-ui/core/Typography";
 import CodeIcon from "@material-ui/icons/Code";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      "& a": {
+        textDecoration: "none",
+      },
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -27,6 +34,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     logoImage: {
       height: "32px",
+    },
+    link: {
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
     },
   })
 );
@@ -82,9 +95,34 @@ export default function ButtonAppBar() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <Link
+              href="https://github.com/Juggernaut9/url-shortener-ts-frontend"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.link}
+              color="inherit"
+            >
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <GitHubIcon />
+                </ListItemIcon>
+                <ListItemText primary="Frontend" />
+              </MenuItem>
+            </Link>
+            <Link
+              href="https://github.com/Juggernaut9/url-shortener-ts-backend"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.link}
+              color="inherit"
+            >
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <GitHubIcon />
+                </ListItemIcon>
+                <ListItemText primary="Backend" />
+              </MenuItem>
+            </Link>
           </Menu>
         </Toolbar>
       </AppBar>
