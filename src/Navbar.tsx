@@ -14,6 +14,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import Link from "@material-ui/core/Link";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,24 +71,28 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Shorts
           </Typography>
-          <IconButton
-            aria-label="toggle dark mode"
-            aria-controls="toggle dark mode"
-            aria-haspopup="false"
-            onClick={handleThemeChangeMenu}
-            color="inherit"
-          >
-            {darkMode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
-          </IconButton>
-          <IconButton
-            aria-label="view source code"
-            aria-controls="open source code menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-            color="inherit"
-          >
-            <CodeIcon />
-          </IconButton>
+          <Tooltip title="Toggle Dark mode">
+            <IconButton
+              aria-label="toggle dark mode"
+              aria-controls="toggle dark mode"
+              aria-haspopup="false"
+              onClick={handleThemeChangeMenu}
+              color="inherit"
+            >
+              {darkMode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Source Code">
+            <IconButton
+              aria-label="view source code"
+              aria-controls="open source code menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              color="inherit"
+            >
+              <CodeIcon />
+            </IconButton>
+          </Tooltip>
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}

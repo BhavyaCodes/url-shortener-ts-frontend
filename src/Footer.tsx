@@ -11,6 +11,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import Link from "@material-ui/core/Link";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -48,48 +49,54 @@ function Footer() {
       <Toolbar className={classes.footerIcons}>
         <div></div>
         <div>
-          <Link
-            href="https://github.com/Juggernaut9"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="inherit"
-          >
-            <IconButton
-              aria-label="Github"
-              aria-haspopup="true"
+          <Tooltip title="Github">
+            <Link
+              href="https://github.com/Juggernaut9"
+              target="_blank"
+              rel="noopener noreferrer"
               color="inherit"
             >
-              <GitHubIcon />
-            </IconButton>
-          </Link>
-          <Link
-            href="https://twitter.com/BhavyaCodes"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="inherit"
-          >
-            <IconButton
-              aria-label="Github"
-              aria-haspopup="true"
+              <IconButton
+                aria-label="Github"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <GitHubIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
+          <Tooltip title="Twitter">
+            <Link
+              href="https://twitter.com/BhavyaCodes"
+              target="_blank"
+              rel="noopener noreferrer"
               color="inherit"
             >
-              <TwitterIcon />
-            </IconButton>
-          </Link>
-          <Link
-            href="mailto:fullmernstack@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            color="inherit"
-          >
-            <IconButton
-              aria-label="Github"
-              aria-haspopup="true"
+              <IconButton
+                aria-label="Github"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <TwitterIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
+          <Tooltip title="Email">
+            <Link
+              href="mailto:fullmernstack@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               color="inherit"
             >
-              <EmailIcon />
-            </IconButton>
-          </Link>
+              <IconButton
+                aria-label="Github"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <EmailIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
         </div>
       </Toolbar>
     </AppBar>
