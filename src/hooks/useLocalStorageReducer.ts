@@ -1,10 +1,14 @@
 import { useReducer, useEffect } from "react";
 
-function useLocalStorageReducer(key, defaultVal, reducer) {
+function useLocalStorageReducer(
+  key: string,
+  defaultVal: any,
+  reducer: () => {}
+) {
   const [state, dispatch] = useReducer(reducer, defaultVal, () => {
     let value;
     try {
-      value = JSON.parse(window.localStorage.getItem(key)) || defaultVal;
+      value = JSON.parse(window.localStorage.getItem(key)!) || defaultVal;
     } catch (error) {
       value = defaultVal;
     }
@@ -13,7 +17,7 @@ function useLocalStorageReducer(key, defaultVal, reducer) {
 
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(state));
-  }, [state]);
+  }, [state, key]);
 
   return [state, dispatch];
 }
