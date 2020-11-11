@@ -7,6 +7,9 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import { ThemeContext, DispatchThemeContext } from "./ThemeContext";
 import Typography from "@material-ui/core/Typography";
+import CodeIcon from "@material-ui/icons/Code";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +40,16 @@ export default function ButtonAppBar() {
     dispatchTheme({ type: darkMode === "dark" ? "light" : "dark" });
   };
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -53,6 +66,26 @@ export default function ButtonAppBar() {
           >
             {darkMode === "light" ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
+          <IconButton
+            aria-label="view source code"
+            aria-controls="open source code menu"
+            aria-haspopup="true"
+            onClick={handleClick}
+            color="inherit"
+          >
+            <CodeIcon />
+          </IconButton>
+          <Menu
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
     </div>
