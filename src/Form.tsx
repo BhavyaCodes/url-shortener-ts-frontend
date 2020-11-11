@@ -21,6 +21,10 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    bigRoot: {
+      minHeight: "100vh",
+      position: "relative",
+    },
     root: {
       textAlign: "center",
     },
@@ -120,7 +124,7 @@ export default function Form() {
   // };
 
   return (
-    <div>
+    <div className={classes.bigRoot}>
       <Snackbar
         anchorOrigin={{
           vertical: "bottom",
