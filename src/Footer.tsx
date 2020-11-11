@@ -46,17 +46,7 @@ function Footer() {
   return (
     <AppBar position="absolute" color="primary" className={classes.footer}>
       <Toolbar className={classes.footerIcons}>
-        <div>
-          {/* <Typography
-            variant="subtitle1"
-            gutterBottom
-            className={classes.footerText}
-          >
-            <span>Made with </span>
-            <FavoriteIcon className={classes.heartIcon} />
-            <span> by Bhavya Tomar</span>
-          </Typography> */}
-        </div>
+        <div></div>
         <div>
           <Link
             href="https://github.com/Juggernaut9"

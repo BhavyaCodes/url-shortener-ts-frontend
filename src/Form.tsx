@@ -134,14 +134,6 @@ export default function Form() {
     setOpen(false);
   };
 
-  // progress
-
-  // const displayProgress = () => {
-  //   const timer = setTimeout(() => {
-  //     setLoading(true)
-  //   }, 1000);
-  // };
-
   return (
     <div className={classes.bigRoot}>
       <Snackbar
