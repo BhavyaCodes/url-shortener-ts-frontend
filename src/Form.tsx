@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import QRCode from "qrcode.react";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -102,6 +103,8 @@ export default function Form() {
   const baseUrl = window.location.origin;
   const textInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
+  const matches = useMediaQuery("(max-width:600px)");
+  const [titleVisible, setTitleVisible] = useState(true);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -134,6 +137,16 @@ export default function Form() {
     setOpen(false);
   };
 
+  const handleOnFocus = () => {
+    if (matches) {
+      setTitleVisible(false);
+    }
+  };
+
+  const handleOnBlur = () => {
+    setTitleVisible(true);
+  };
+
   return (
     <div className={classes.bigRoot}>
       <Snackbar
@@ -160,14 +173,17 @@ export default function Form() {
       />
       <Navbar />
       <Container className={classes.root}>
-        <Typography
-          variant="h3"
-          gutterBottom
-          align="center"
-          className={classes.title}
-        >
-          Shorts - URL Shortening Service
-        </Typography>
+        {titleVisible ? (
+          <Typography
+            variant="h3"
+            gutterBottom
+            align="center"
+            className={classes.title}
+          >
+            Shorts - URL Shortening Service
+          </Typography>
+        ) : null}
+
         <Paper
           component="form"
           onSubmit={handleSubmit}
@@ -180,6 +196,8 @@ export default function Form() {
             type="url"
             required
             inputRef={textInputRef}
+            onFocus={handleOnFocus}
+            onBlur={handleOnBlur}
           />
           <Button color="secondary" type="submit">
             Generate
