@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       marginTop: theme.spacing(5),
-      marginBottom: theme.spacing(5),
       fontFamily: "'Montserrat', sans-serif",
       fontWeight: 400,
     },
@@ -44,6 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginLeft: "auto",
       marginRight: "auto",
       padding: theme.spacing(1),
+      marginTop: theme.spacing(5),
       [theme.breakpoints.down("sm")]: {
         width: "100%",
       },
