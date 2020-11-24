@@ -117,6 +117,7 @@ export default function Form() {
     clearTimeout(timer);
     setLoading(false);
     setShortUrl(`${baseUrl}/${response.data.url.short}`);
+    setTitleVisible(true);
   };
 
   // snackbar
@@ -188,6 +189,8 @@ export default function Form() {
           component="form"
           onSubmit={handleSubmit}
           className={classes.inputContainer}
+          onFocus={handleOnFocus}
+          onBlur={handleOnBlur}
         >
           <InputBase
             className={classes.input}
@@ -196,8 +199,6 @@ export default function Form() {
             type="url"
             required
             inputRef={textInputRef}
-            onFocus={handleOnFocus}
-            onBlur={handleOnBlur}
           />
           <Button color="secondary" type="submit">
             Generate
